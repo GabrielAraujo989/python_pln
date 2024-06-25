@@ -1,16 +1,27 @@
 pipeline {
     agent any
-    
+
     stages {
         stage('Preparação do Ambiente') {
             steps {
-                echo 'Já instalado'
+                sh '''
+                    # Atualizar pacotes e instalar Python3 e pip
+                    apt-get update
+                    apt-get install -y python3 python3-pip
+                    
+                    # Verificar a versão do Python instalado
+                    python3 --version
+                    pip3 --version
+                    
+                    # Instalar os requisitos do projeto
+                    pip3 install -r requisitos.txt
+                '''
             }
         }
 
         stage('Execução do Teste Levenshtein') {
             steps {
-                sh 'python levenshtein_teste.py'
+                sh 'python3 levenshtein_teste.py'
             }
         }
 
@@ -28,7 +39,7 @@ pipeline {
 
         stage('Execução do Chatbot') {
             steps {
-                sh 'python chat_bot.py'
+                sh 'python3 chat_bot.py'
             }
         }
     }
