@@ -1,16 +1,14 @@
 pipeline {
     agent {
         docker {
-            image 'devopsjourney1/myjenkinsagents:python'
-            label 'docker-agent-python' 
-            
+            image 'python:3.8'  // Use a versão específica do Python que você precisa
+            label 'docker-agent-python'
         }
     }
     stages {
         stage('Preparação do Ambiente') {
             steps {
-                
-                echo 'ja instalado'
+                echo 'Já instalado'
             }
         }
 
