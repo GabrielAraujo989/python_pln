@@ -1,10 +1,6 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.8'  // Use a versão específica do Python que você precisa
-            label 'docker-agent-python'
-        }
-    }
+    agent any
+    
     stages {
         stage('Preparação do Ambiente') {
             steps {
