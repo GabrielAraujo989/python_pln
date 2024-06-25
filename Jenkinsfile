@@ -1,24 +1,19 @@
 pipeline {
-    agent Dockerfile true
+    agent any
 
     stages {
         stage('Preparação do Ambiente') {
             steps {
-                sh '''
-                    # Atualizar pacotes e instalar Python3 e pip
-                    apt-get update
-                    apt-get install -y python3 python3-pip
-                    
-                    # Verificar a versão do Python instalado
-                    python3 --version
-                    pip3 --version
-                    
-                    # Instalar os requisitos do projeto
-                    pip3 install -r requisitos.txt
-                '''
+                
+                echo 'ja instalado'
             }
         }
 
+        stage('Execução do Teste Levenshtein') {
+            steps {
+                sh 'python3 levenshtein_teste.py'
+            }
+        }
         stage('Execução do Teste Levenshtein') {
             steps {
                 sh 'python3 levenshtein_teste.py'
