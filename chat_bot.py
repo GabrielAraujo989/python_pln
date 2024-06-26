@@ -23,13 +23,12 @@ def encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia=5):
       return melhor_resposta
   else:
       return "Pergunta não encontrada."
-
+    
 if __name__ == "__main__":
   perguntas_respostas = carregar_perguntas("perguntas.txt")
-  limiar_distancia = int(input("Digite o limiar de distância para considerar uma pergunta semelhante:"))
-  while True:
-    pergunta = input("Faça uma pergunta:").lower()
-    if pergunta == "sair":
-      break
-    resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
-    print("Resposta:", resposta)
+  limiar_distancia = 10
+
+  pergunta = "Quem é voce:"
+
+  resposta = encontrar_resposta(pergunta, perguntas_respostas, limiar_distancia)
+  print("Resposta:", resposta)
