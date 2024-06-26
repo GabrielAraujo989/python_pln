@@ -1,6 +1,11 @@
 pipeline {
     agent any
 
+
+    parameters{
+        string(name: 'Digite a Pergunta', description: 'faça a pergunta')
+    }
+    
    stages {
         stage('Preparação do Ambiente') {
             steps {
